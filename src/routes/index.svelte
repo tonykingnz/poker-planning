@@ -1,2 +1,9 @@
-<h1 class="text-3xl font-bold underline">Hello world!</h1>
-<button class="btn btn-primary">daisyUI Button</button>
+<script>
+	import List from "$lib/List.svelte"
+</script>
+
+<svelte:head>
+	<title>Home - Poker Planning</title>
+</svelte:head>
+
+<List />
