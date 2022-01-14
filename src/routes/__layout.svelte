@@ -8,7 +8,7 @@
 	<title>Poker Planning</title>
 </svelte:head>
 
-<html class="flex flex-col h-screen bg-base-200" lang="en-US">
+<html class="flex flex-col h-screen bg-base-100 text-base-content" lang="en-US">
 	<Header />
 
 	<main class="grow p-2">
