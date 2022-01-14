@@ -15,7 +15,6 @@
 	let title = ""
 	$: title_trim = title.trim()
 	$: task = {"index": index_task_local, "title": title_trim, "score": 0}
-	$:console.log(index_task_local)
 	
 	function addStory(){
 		if (title_trim.length){

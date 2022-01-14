@@ -16,9 +16,9 @@
 	<hr>
 	<!--<p>{JSON.stringify(story_local)}</p>-->
 	{#if story_local.length > 0}
-		<div class="flex space-x-2 py-4">
+		<div class="flex flex-wrap place-content-evenly py-2">
 			{#each story_local as task}
-				<button class="btn" on:click={selectTask(task)}>
+				<button class="btn mx-1 my-1" on:click={selectTask(task)}>
 					{task.title} - {task.score}
 				</button>
 			{/each}

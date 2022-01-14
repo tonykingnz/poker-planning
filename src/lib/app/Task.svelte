@@ -38,19 +38,21 @@
 		
 		let i = 0
 		function reIndex(task){
-			let result = task.index = i
-			i += 1
-			return result
+    	let process = task
+    	process.index = i
+    	let result = process
+    	i += 1 
+    	return result
 		}
-		story_local.map(reIndex)
-		console.log(story_local)
+
+		let story_reindexed = story_local.map(reIndex)
 		
-		index_task_value = i - 1
+		let index_task_value = i
 		index_task.set(index_task_value)
-		stories.update(stories => [stories[index_story], story_local]);
+		stories.update(stories => [stories[index_story], story_reindexed]);
 	}
 </script>
-<!--<p>{JSON.stringify(story_local)}</p>-->
+
 <div class="py-4">
 	{#if task_local.title != undefined}
 		<h4>Task selected: <b>{task_local.title}</b></h4>
