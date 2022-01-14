@@ -1,5 +1,5 @@
 <script>
-	import { stories, selected_story_task } from ".$lib/app/stores.js";
+	import { stories, selected_story_task } from "$lib/app/stores.js";
 
 	let index_store = 0
 
