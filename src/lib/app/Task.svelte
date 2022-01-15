@@ -64,26 +64,26 @@
 
 		<div class="py-4">
 			<p>Edit task title:</p>
-			<div class="flex space-x-2">
+			<div class="flex flex-wrap space-x-2">
 				<input
 					bind:value={input_text}
 					type="text"
 					placeholder="New title"
-					class="input input-bordered"
+					class="input input-bordered mr-1 my-1"
 				/>
-				<button class="btn btn-secondary px-2" on:click={() => editTask()}>Update Title</button>
-				<button class="btn btn-warning px-2" on:click={() => deleteTask()}>Delete Task</button>
+				<button class="btn btn-secondary m-1 px-2" on:click={() => editTask()}>Update Title</button>
+				<button class="btn btn-warning m-1 px-2" on:click={() => deleteTask()}>Delete Task</button>
 			</div>
 		</div>
 
-		<div class="flex space-x-1 py">
+		<div class="flex flex-wrap place-content-start py">
 			{#each possibleScores as score}
 				{#if score == task_local.score}
-					<button class="btn btn-accent btn-active btn-disabled" on:click={() => giveScore(score)}
+					<button class="btn m-0.5 btn-accent btn-active btn-disabled" on:click={() => giveScore(score)}
 						>{score}</button
 					>
 				{:else}
-					<button class="btn btn-outline" on:click={() => giveScore(score)}>{score}</button>
+					<button class="btn m-0.5 btn-outline" on:click={() => giveScore(score)}>{score}</button>
 				{/if}
 			{/each}
 		</div>
