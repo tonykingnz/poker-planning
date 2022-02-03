@@ -1,16 +1,15 @@
 <script>
-	import { stories } from './stores.js';
+	import { writable_story } from './stores.js';
 
 	let score = 0;
 
-	let index_store = 0;
-	let stories_local = [];
-	stories.subscribe((value) => {
-		stories_local = value[index_store];
+	let writable_story_local = [];
+	writable_story.subscribe((value) => {
+		writable_story_local = value;
 	});
 
-	$: !stories_local.length ||
-		(score = stories_local.reduce((total, story) => (total += story.score), 0));
+	$: !writable_story_local.length ||
+		(score = writable_story_local.reduce((total, story) => (total += story.score), 0));
 </script>
 
 <div>

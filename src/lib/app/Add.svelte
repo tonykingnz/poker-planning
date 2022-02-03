@@ -1,40 +1,37 @@
 <script>
-	import { stories, index_task } from './stores.js';
+	import { writable_story, writable_index_task } from './stores.js';
 
-	let index_story = 0;
-
-	let story_local = [];
-	stories.subscribe((value) => {
-		story_local = value[index_story];
+	let writable_story_local = [];
+	writable_story.subscribe((value) => {
+		writable_story_local = value;
 	});
 
-	let index_task_local = {};
-	index_task.set(0);
-	index_task.subscribe((value) => {
-		index_task_local = value;
+	let writable_index_task_local = {};
+	writable_index_task.set(0);
+	writable_index_task.subscribe((value) => {
+		writable_index_task_local = value;
 	});
 
-	let title = '';
-	$: title_trim = title.trim();
-	$: task = { index: index_task_local, title: title_trim, score: 0 };
+	let title_task = '';
+	$: task = { index: writable_index_task_local, title: title_task.trim().toLowerCase(), score: 0 };
 
-	function addStory() {
-		if (title_trim.length) {
-			if (!story_local.some((story_local) => story_local.title === task.title)) {
-				story_local.push(task);
-				stories.update((stories) => [stories[index_story], story_local]);
-				index_task.update((index_task) => (index_task += 1));
-				title = '';
-			}
+	function addTask() {
+		let title_trimed = title_task.trim().toLowerCase();
+		let is_unique_task = !writable_story_local.some((value) => value.title === task.title);
+		if (title_trimed.length && is_unique_task) {
+			writable_story_local.push(task);
+			writable_story.update((value) => writable_story_local);
+			writable_index_task.update((index_task) => (index_task += 1));
+			title_task = '';
 		}
 	}
 </script>
 
 <div class="form-control flex flex-row justify-start py-2">
 	<div class="pr-2">
-		<input class="input input-bordered" bind:value={title} placeholder="Create new task" />
+		<input class="input input-bordered" bind:value={title_task} placeholder="Create new task" />
 	</div>
 	<div>
-		<button class="btn btn-primary text-2xl" on:click={addStory}> + </button>
+		<button class="btn btn-primary text-2xl" on:click={addTask}> + </button>
 	</div>
 </div>
